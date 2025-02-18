@@ -106,12 +106,17 @@ def download_models(default_model, previous_default_models, checkpoint_downloads
     for file_name, url in vae_approx_filenames:
         load_file_from_url(url=url, model_dir=config.path_vae_approx, file_name=file_name)
 
+
     load_file_from_url(
         url='https://huggingface.co/lllyasviel/misc/resolve/main/fooocus_expansion.bin',
         model_dir=config.path_fooocus_expansion,
         file_name='pytorch_model.bin'
     )
-
+    load_file_from_url(
+        url="https://civitai.com/api/download/models/1366495?type=Model&format=SafeTensor&size=full&fp=fp16",
+        model_dir=config.path_fooocus_expansion,
+        file_name='pytorch_model.bin'
+    )
     if args.disable_preset_download:
         print('Skipped model download.')
         return default_model, checkpoint_downloads
